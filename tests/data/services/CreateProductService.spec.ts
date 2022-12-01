@@ -1,9 +1,8 @@
 import { CreateProductService } from '@/data/services'
-// import { Product } from '@/domain/models'
 import { CreateProduct } from '@/domain/features'
 
 interface ICreateProductRepositoryStub {
-  create: (params: CreateProduct.Params) => Promise<any>
+  create: (params: CreateProduct.Params) => Promise<CreateProduct.Result>
 }
 
 class CreateProductRepositoryStub implements ICreateProductRepositoryStub {
