@@ -69,4 +69,16 @@ describe('CreateProductController', () => {
     httpResponse = await sut.handle(httpRequest)
     expect(httpResponse.statusCode).toBe(500)
   })
+
+  it('Should return 201 if CreateProductService succeed', async () => {
+    httpResponse = await sut.handle(httpRequest)
+    expect(httpResponse.statusCode).toBe(201)
+    expect(httpResponse.data).toEqual({
+      _id: 'valid_id',
+      name: 'Bag',
+      color: 'black',
+      lostTime: new Date('2022-01-01'),
+      createdAt: new Date('2022-01-01')
+    })
+  })
 })
