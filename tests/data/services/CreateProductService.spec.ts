@@ -1,11 +1,8 @@
 import { CreateProductService } from '@/data/services'
 import { CreateProduct } from '@/domain/features'
+import { ICreateProductRepository } from '@/data/protocols'
 
-interface ICreateProductRepositoryStub {
-  create: (params: CreateProduct.Params) => Promise<CreateProduct.Result>
-}
-
-class CreateProductRepositoryStub implements ICreateProductRepositoryStub {
+class CreateProductRepositoryStub implements ICreateProductRepository {
   async create (params: CreateProduct.Params): Promise<CreateProduct.Result> {
     return {
       _id: 'valid_id',
