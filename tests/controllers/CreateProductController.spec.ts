@@ -67,9 +67,6 @@ describe('CreateProductController', () => {
       })
     })
     httpResponse = await sut.handle(httpRequest)
-    expect(httpResponse).toEqual({
-      statusCode: 500,
-      message: new Error('Internal server error')
-    })
+    expect(httpResponse.statusCode).toBe(500)
   })
 })
