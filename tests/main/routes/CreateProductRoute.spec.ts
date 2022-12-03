@@ -22,6 +22,6 @@ describe('CreateProductRoute', () => {
         color: 'any_product_color',
         lostTime: new Date()
       })
-      .expect(200)
+      .expect(201)
   })
 })
