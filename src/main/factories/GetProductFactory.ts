@@ -1,4 +1,4 @@
-import { GetProductController } from '@/controllers'
+import { GetProductController } from '@/application/controllers'
 import { GetProductService } from '@/data/services'
 import { GetProductMongoRepository } from '@/infra/db/mongodb/repositories'
 

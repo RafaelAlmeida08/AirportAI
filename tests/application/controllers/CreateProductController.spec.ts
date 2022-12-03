@@ -1,4 +1,4 @@
-import { CreateProductController } from '@/controllers'
+import { CreateProductController } from '@/application/controllers'
 import { ICreateProductRepository } from '@/data/protocols'
 import { CreateProduct, ICreateProduct } from '@/domain/features'
 import { HttpRequest, HttpResponse } from '@/presentation/protocols'

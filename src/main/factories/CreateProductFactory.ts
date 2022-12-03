@@ -1,4 +1,4 @@
-import { CreateProductController } from '@/controllers'
+import { CreateProductController } from '@/application/controllers'
 import { CreateProductService } from '@/data/services'
 import { CreateProductMongoRepository } from '@/infra/db/mongodb'
 
