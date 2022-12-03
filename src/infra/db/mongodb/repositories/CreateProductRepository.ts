@@ -5,7 +5,6 @@ import { MongoHelper } from '../helpers'
 export class CreateProductMongoRepository implements ICreateProductRepository {
   async create (params: CreateProduct.Params): Promise<any> {
     const productCollection = MongoHelper.getCollection('products')
-    const result = await productCollection.insertOne(params)
-    return result
+    return await productCollection.insertOne(params)
   }
 }
