@@ -1,5 +1,5 @@
 import { IGetProduct } from '@/domain/features'
-import { ok } from '@/presentation/helpers'
+import { ok, serverError } from '@/presentation/helpers'
 import { Controller, HttpRequest, HttpResponse } from '@/presentation/protocols'
 
 export class GetProductController implements Controller {
@@ -9,8 +9,12 @@ export class GetProductController implements Controller {
   }
 
   async handle (request: HttpRequest): Promise<HttpResponse> {
-    const { id } = request.params
-    const product = await this.getProductService.execute(id)
-    return ok(product)
+    try {
+      const { id } = request.params
+      const product = await this.getProductService.execute(id)
+      return ok(product)
+    } catch (error) {
+      return serverError()
+    }
   }
 }
