@@ -1,5 +1,5 @@
 import { Product } from '@/domain/models'
-import { GetProductError } from '@/domain//erros'
+import { GetProductError } from '@/domain/erros'
 
 export interface IGetProduct {
   execute: (id: GetProduct.Params) => Promise<GetProduct.Result>
