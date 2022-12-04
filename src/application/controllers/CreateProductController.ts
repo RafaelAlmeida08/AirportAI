@@ -14,7 +14,7 @@ export class CreateProductController implements Controller {
       const product = await this.createProductService.execute({ name, color, lostTime })
       return created(product)
     } catch (error) {
-      return serverError()
+      return serverError(error as Error)
     }
   }
 }

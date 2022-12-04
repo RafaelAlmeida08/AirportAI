@@ -5,9 +5,9 @@ export const badRequest = (error: Error): HttpResponse => ({
   message: error
 })
 
-export const serverError = (): HttpResponse => ({
+export const serverError = (error: Error): HttpResponse => ({
   statusCode: 500,
-  message: new ServerError()
+  message: new ServerError(error.stack)
 })
 
 export const ok = (data: any): HttpResponse => ({
@@ -21,8 +21,9 @@ export const created = (data: any): HttpResponse => ({
 })
 
 class ServerError extends Error {
-  constructor () {
+  constructor (stack: string | undefined) {
     super('Internal Server Error')
     this.name = 'ServerError'
+    this.stack = stack
   }
 }

@@ -14,7 +14,7 @@ export class GetProductController implements Controller {
       const product = await this.getProductService.execute(id)
       return ok(product)
     } catch (error) {
-      return serverError()
+      return serverError(error as Error)
     }
   }
 }
