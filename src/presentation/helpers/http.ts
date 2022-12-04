@@ -25,6 +25,11 @@ export const created = (data: any): HttpResponse => ({
   data: data
 })
 
+export const noContent = (): HttpResponse => ({
+  statusCode: 204,
+  data: null
+})
+
 class ServerError extends Error {
   constructor (stack: string | undefined) {
     super('Internal Server Error')
