@@ -5,6 +5,11 @@ export const badRequest = (error: Error): HttpResponse => ({
   message: error
 })
 
+export const forbidden = (error: Error): HttpResponse => ({
+  statusCode: 403,
+  data: error
+})
+
 export const serverError = (error: Error): HttpResponse => ({
   statusCode: 500,
   data: new ServerError(error.stack)
@@ -25,5 +30,12 @@ class ServerError extends Error {
     super('Internal Server Error')
     this.name = 'ServerError'
     this.stack = stack
+  }
+}
+
+export class AccessDeniedError extends Error {
+  constructor () {
+    super('Access Denied')
+    this.name = 'AccessDeniedError'
   }
 }
