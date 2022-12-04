@@ -3,10 +3,12 @@ import { CreateProductService } from '@/data/services'
 import { CreateProductMongoRepository } from '@/infra/db/mongodb'
 import { Controller } from '@/presentation/protocols'
 import { LogControllerDecorator } from '@/main/decorators'
+import { LogErrorMongoRepository } from '@/infra/db/mongodb/repositories'
 
 export const makeCreateProductController = (): Controller => {
   const createProductMongoRepository = new CreateProductMongoRepository()
   const createProductService = new CreateProductService(createProductMongoRepository)
   const createProductController = new CreateProductController(createProductService)
-  return new LogControllerDecorator(createProductController)
+  const logErrorMongoRepository = new LogErrorMongoRepository()
+  return new LogControllerDecorator(createProductController, logErrorMongoRepository)
 }
