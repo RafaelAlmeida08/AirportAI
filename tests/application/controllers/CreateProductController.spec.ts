@@ -74,6 +74,54 @@ describe('CreateProductController', () => {
     expect(httpResponse.statusCode).toBe(500)
   })
 
+  it('Should return 400 if no product name is provided', async () => {
+    httpRequest = {
+      body: {
+        color: 'any_color',
+        description: 'any_description',
+        lostTime: new Date('2022-01-01')
+      }
+    }
+    const httpResponse = await sut.handle(httpRequest)
+    expect(httpResponse.statusCode).toBe(400)
+  })
+
+  it('Should return 400 if no product color is provided', async () => {
+    httpRequest = {
+      body: {
+        name: 'any_name',
+        description: 'any_description',
+        lostTime: new Date('2022-01-01')
+      }
+    }
+    const httpResponse = await sut.handle(httpRequest)
+    expect(httpResponse.statusCode).toBe(400)
+  })
+
+  it('Should return 400 if no product description is provided', async () => {
+    httpRequest = {
+      body: {
+        color: 'any_color',
+        name: 'any_name',
+        lostTime: new Date('2022-01-01')
+      }
+    }
+    const httpResponse = await sut.handle(httpRequest)
+    expect(httpResponse.statusCode).toBe(400)
+  })
+
+  it('Should return 400 if no product lostTime is provided', async () => {
+    httpRequest = {
+      body: {
+        name: 'any_name',
+        color: 'any_color',
+        description: 'any_description'
+      }
+    }
+    const httpResponse = await sut.handle(httpRequest)
+    expect(httpResponse.statusCode).toBe(400)
+  })
+
   it('Should return 201 if CreateProductService succeed', async () => {
     httpResponse = await sut.handle(httpRequest)
     expect(httpResponse.statusCode).toBe(201)
