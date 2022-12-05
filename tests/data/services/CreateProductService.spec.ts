@@ -5,9 +5,10 @@ import { ICreateProductRepository } from '@/data/protocols'
 class CreateProductRepositoryStub implements ICreateProductRepository {
   async create (params: CreateProduct.Params): Promise<CreateProduct.Result> {
     return {
-      _id: 'valid_id',
-      name: 'Bag',
-      color: 'black',
+      _id: 'any_id',
+      name: 'any_name',
+      color: 'any_color',
+      description: 'any_description',
       lostTime: new Date('2022-01-01'),
       createdAt: new Date('2022-01-01')
     }
@@ -18,8 +19,9 @@ describe('CreateProductService', () => {
   let createProductRepositoryStub: CreateProductRepositoryStub
   let sut: CreateProductService
   const fakeProductData = {
-    name: 'Bag',
-    color: 'black',
+    name: 'any_name',
+    color: 'any_color',
+    description: 'any_description',
     lostTime: new Date('2022-01-01')
   }
   beforeEach(() => {
@@ -31,8 +33,9 @@ describe('CreateProductService', () => {
     const createProductRepositorySpy = jest.spyOn(createProductRepositoryStub, 'create')
     await sut.execute(fakeProductData)
     expect(createProductRepositorySpy).toHaveBeenCalledWith({
-      name: 'Bag',
-      color: 'black',
+      name: 'any_name',
+      color: 'any_color',
+      description: 'any_description',
       lostTime: new Date('2022-01-01')
     })
   })
@@ -46,9 +49,10 @@ describe('CreateProductService', () => {
   it('Should return a Product on success', async () => {
     const result = await sut.execute(fakeProductData)
     expect(result).toEqual({
-      _id: 'valid_id',
-      name: 'Bag',
-      color: 'black',
+      _id: 'any_id',
+      name: 'any_name',
+      color: 'any_color',
+      description: 'any_description',
       lostTime: new Date('2022-01-01'),
       createdAt: new Date('2022-01-01')
     })

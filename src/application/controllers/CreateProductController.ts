@@ -10,8 +10,8 @@ export class CreateProductController implements Controller {
 
   async handle (request: HttpRequest): Promise<HttpResponse> {
     try {
-      const { name, color, lostTime } = request.body
-      const product = await this.createProductService.execute({ name, color, lostTime })
+      const { name, color, description, lostTime } = request.body
+      const product = await this.createProductService.execute({ name, color, description, lostTime })
       return created(product)
     } catch (error) {
       return serverError(error as Error)

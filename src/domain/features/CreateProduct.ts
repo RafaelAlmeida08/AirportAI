@@ -9,6 +9,7 @@ export namespace CreateProduct {
   export type Params = {
     name: string
     color: string
+    description: string
     lostTime: Date
   }
   export type Result = Product | CreateProductError

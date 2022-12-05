@@ -6,9 +6,10 @@ import { HttpRequest, HttpResponse } from '@/presentation/protocols'
 class CreateProductRepositoryStub implements ICreateProductRepository {
   async create (params: CreateProduct.Params): Promise<CreateProduct.Result> {
     return {
-      _id: 'valid_id',
-      name: 'Bag',
-      color: 'black',
+      _id: 'any_id',
+      name: 'any_name',
+      color: 'any_color',
+      description: 'any_description',
       lostTime: new Date('2022-01-01'),
       createdAt: new Date('2022-01-01')
     }
@@ -23,9 +24,10 @@ class CreateProductServiceStub implements ICreateProduct {
 
   async execute (params: CreateProduct.Params): Promise<CreateProduct.Result> {
     return {
-      _id: 'valid_id',
-      name: 'Bag',
-      color: 'black',
+      _id: 'any_id',
+      name: 'any_name',
+      color: 'any_color',
+      description: 'any_description',
       lostTime: new Date('2022-01-01'),
       createdAt: new Date('2022-01-01')
     }
@@ -41,8 +43,9 @@ describe('CreateProductController', () => {
   beforeEach(() => {
     httpRequest = {
       body: {
-        name: 'Bag',
-        color: 'black',
+        name: 'any_name',
+        color: 'any_color',
+        description: 'any_description',
         lostTime: new Date('2022-01-01')
       }
     }
@@ -54,8 +57,9 @@ describe('CreateProductController', () => {
     const spy = jest.spyOn(createProductServiceStub, 'execute')
     await sut.handle(httpRequest)
     expect(spy).toBeCalledWith({
-      name: 'Bag',
-      color: 'black',
+      name: 'any_name',
+      color: 'any_color',
+      description: 'any_description',
       lostTime: new Date('2022-01-01')
     })
   })
@@ -74,9 +78,10 @@ describe('CreateProductController', () => {
     httpResponse = await sut.handle(httpRequest)
     expect(httpResponse.statusCode).toBe(201)
     expect(httpResponse.data).toEqual({
-      _id: 'valid_id',
-      name: 'Bag',
-      color: 'black',
+      _id: 'any_id',
+      name: 'any_name',
+      color: 'any_color',
+      description: 'any_description',
       lostTime: new Date('2022-01-01'),
       createdAt: new Date('2022-01-01')
     })
