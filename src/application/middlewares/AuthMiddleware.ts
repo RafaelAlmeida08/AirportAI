@@ -1,4 +1,5 @@
-import { AccessDeniedError, forbidden } from '@/presentation/helpers'
+import { AccessDeniedError } from '@/presentation/erros'
+import { forbidden } from '@/presentation/helpers'
 import { HttpRequest, HttpResponse, Middleware } from '@/presentation/protocols'
 
 export class AuthMiddleware implements Middleware {

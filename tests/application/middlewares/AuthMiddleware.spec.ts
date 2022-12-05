@@ -1,5 +1,6 @@
-import { AccessDeniedError, forbidden } from '@/presentation/helpers'
+import { forbidden } from '@/presentation/helpers'
 import { AuthMiddleware } from '@/application/middlewares'
+import { AccessDeniedError } from '@/presentation/erros'
 
 describe('Aith Middleware', () => {
   let sut: AuthMiddleware

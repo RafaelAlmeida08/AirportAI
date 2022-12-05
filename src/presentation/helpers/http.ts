@@ -1,4 +1,5 @@
 import { HttpResponse } from '@/presentation/protocols'
+import { ServerError } from '@/presentation/erros'
 
 export const badRequest = (error: Error): HttpResponse => ({
   statusCode: 400,
@@ -29,18 +30,3 @@ export const noContent = (): HttpResponse => ({
   statusCode: 204,
   data: null
 })
-
-class ServerError extends Error {
-  constructor (stack: string | undefined) {
-    super('Internal Server Error')
-    this.name = 'ServerError'
-    this.stack = stack
-  }
-}
-
-export class AccessDeniedError extends Error {
-  constructor () {
-    super('Access Denied')
-    this.name = 'AccessDeniedError'
-  }
-}
