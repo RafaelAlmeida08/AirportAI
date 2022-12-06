@@ -1,3 +1,8 @@
 export interface ITokenValidator {
-  isValid: (token: string) => boolean
+  isValid: (param: TValidator.Param) => TValidator.Result
+}
+
+export namespace TValidator{
+  export type Param = string
+  export type Result = any
 }
