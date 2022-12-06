@@ -47,6 +47,9 @@ describe('CreateProductController', () => {
         color: 'any_color',
         description: 'any_description',
         lostTime: new Date('2022-01-01')
+      },
+      headers: {
+        accessToken: 'any_access_token'
       }
     }
     createProductRepositoryStub = new CreateProductRepositoryStub()
