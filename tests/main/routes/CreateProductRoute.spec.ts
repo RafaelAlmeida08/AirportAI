@@ -1,6 +1,7 @@
 import request from 'supertest'
 import app from '@/main/config/app'
 import { MongoHelper } from '@/infra/db/mongodb/helpers'
+import env from '@/main/config/env'
 
 describe('CreateProductRoute', () => {
   beforeAll(async () => {
@@ -17,8 +18,10 @@ describe('CreateProductRoute', () => {
   it('Should return a product on success', async () => {
     await request(app)
       .post('/products')
+      .set('Authorization', 'Bearer ' + env.defaultToken)
       .send({
         name: 'any_product',
+        description: 'any_description',
         color: 'any_product_color',
         lostTime: new Date()
       })
