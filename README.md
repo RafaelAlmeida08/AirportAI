@@ -15,7 +15,6 @@ Api developed for the airportAI selection process
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiQWlycG9ydEFJIiwiaWF0IjoxNjcwMjg3MzIyLCJleHAiOjE3MDE4MjMzMjJ9.V7V28a6Jp6OkynHXdQoEg0fBosv5FqOTUMO-xESbunk
 
 3. :
-
 * Post to "localhost:3333/products" to create a losted item with the following json body request:
 {
   "name": "item_name",
